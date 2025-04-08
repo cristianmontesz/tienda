@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Crear Nuevo Producto</h1>
+    <form method="post" enctype="multipart/form-data">  <!-- Recibe archivos, como imágenes -->
+        {% csrf_token %}
+        
+        <!-- Campos del formulario -->
+        <div class="form-group">
+            <label for="id_nombre">Nombre del Producto</label>
+            {{ form.nombre }}  <!-- Mostrar campo del formulario para el nombre -->
+        </div>
+
+        <div class="form-group">
+            <label for="id_descripcion">Descripción del Producto</label>
+            {{ form.descripcion }}  <!-- Mostrar campo para la descripción -->
+        </div>
+
+        <div class="form-group">
+            <label for="id_precio">Precio</label>
+            {{ form.precio }}  <!-- Mostrar campo para el precio -->
+        </div>
+
+        <div class="form-group">
+            <label for="id_stock">Stock</label>
+            {{ form.stock }}  <!-- Mostrar campo para el stock -->
+        </div>
+
+        <!-- Botón de envío -->
+        <button type="submit" class="btn btn-primary">Crear Producto</button>
+    </form>
+
+    <!-- Enlace para volver a la lista de productos -->
+    <a href="{% url 'lista_productos' %}" class="btn btn-secondary mt-2">Volver a la lista de productos</a>
+</div>
+{% endblock %}

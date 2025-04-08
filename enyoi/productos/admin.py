@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import producto
+from .models import Producto
 
-# Register your models here.
-@admin.register(producto)
-class productoAdmin(admin.ModelAdmin):
-    list_display = ['nombre', 'descripcion', 'precio', 'stock', 'disponible']
+# Registrar el modelo Producto en el panel de administración
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'precio', 'stock']
+    search_fields = ['descripcion']

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear Venta{% endblock %}
+
+{% block contenido %}
+    <h2>Registrar Nueva Venta</h2>
+
+    {% if error_message %}
+        <div class="alert alert-danger">
+            {{ error_message }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="producto" class="form-label">Producto</label>
+            <select class="form-control" id="producto" name="producto" required>
+                {% for producto in productos %}
+                    <option value="{{ producto.id }}">{{ producto.nombre }} ({{ producto.precio }} COP)</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="cantidad" class="form-label">Cantidad</label>
+            <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar Venta</button>
+    </form>
+{% endblock %}
