@@ -41,5 +41,4 @@ coverage.xml
 
 # Archivos sensibles
 *.env
-enyoi/
 venv/
