@@ -1,0 +1,42 @@
+?? Guía de Despliegue - Tienda-App
+
+Requisitos:
+- Python 3.10+
+- PostgreSQL
+- Node.js y npm
+- Git
+
+1. Clonar el repositorio:
+
+    git clone https://github.com/cristianmontesz/tienda.git
+    cd tienda
+
+2. Backend (Django + PostgreSQL):
+
+    python -m venv venv
+    venv\Scripts\activate   # En Windows
+
+    pip install -r requirements.txt
+
+Configurar PostgreSQL:
+    Crea una base de datos llamada tienda.
+    Luego importa el SQL:
+
+    psql -U postgres -d tienda -f docs/tienda.sql
+
+Migraciones y servidor:
+
+    python manage.py migrate
+    python manage.py runserver
+
+3. Frontend (Vite + React):
+
+    cd frontend/frontend
+    npm install
+    npm run dev
+
+4. Acceder a la app:
+
+    - Frontend: http://localhost:5173/
+    - Backend: http://127.0.0.1:8000/
+
