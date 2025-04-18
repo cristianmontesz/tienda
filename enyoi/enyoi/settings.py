@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'cuentas',
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
+    
     
 ]
 
@@ -52,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'enyoi.urls'
@@ -140,3 +144,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #modelo de usuario personalizado
 AUTH_USER_MODEL = 'cuentas.CustomUser'
+
+USERNAME_FIELD = 'username'
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',  
+    ),
+   
+}
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]

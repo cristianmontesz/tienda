@@ -14,22 +14,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# urls.py
+# productos/urls.py
 from django.urls import path
-from productos.views import ProductoListCreate, ProductoRetrieveUpdateDestroy, VentaListCreate, VentaRetrieveUpdateDestroy, ReporteVentaDiariaListCreate, ReporteVentaDiariaRetrieveUpdateDestroy
+from .views import (
+    ProductoListCreate, ProductoRetrieveUpdateDestroy,
+    VentaListCreate, VentaRetrieveUpdateDestroy,
+    ReporteVentaDiariaListCreate, ReporteVentaDiariaRetrieveUpdateDestroy
+)
 
 urlpatterns = [
-    # Rutas para Producto
-    path('api/productos/', ProductoListCreate.as_view(), name='producto-list-create'),
-    path('api/productos/<int:pk>/', ProductoRetrieveUpdateDestroy.as_view(), name='producto-detail'),
+    # Productos
+    path('productos/', ProductoListCreate.as_view(), name='producto-list-create'),
+    path('productos/<int:pk>/', ProductoRetrieveUpdateDestroy.as_view(), name='producto-detail'),
 
-    # Rutas para Venta
-    path('api/ventas/', VentaListCreate.as_view(), name='venta-list-create'),
-    path('api/ventas/<int:pk>/', VentaRetrieveUpdateDestroy.as_view(), name='venta-detail'),
+    # Ventas
+    path('ventas/', VentaListCreate.as_view(), name='venta-list-create'),
+    path('ventas/<int:pk>/', VentaRetrieveUpdateDestroy.as_view(), name='venta-detail'),
 
-    # Rutas para ReporteVentaDiaria
-    path('api/reportes-venta-diarios/', ReporteVentaDiariaListCreate.as_view(), name='reporte-venta-diaria-list-create'),
-    path('api/reportes-venta-diarios/<int:pk>/', ReporteVentaDiariaRetrieveUpdateDestroy.as_view(), name='reporte-venta-diaria-detail'),
+    # Reportes de venta diarios
+    path('reportes-venta-diarios/', ReporteVentaDiariaListCreate.as_view(), name='reporte-venta-diaria-list-create'),
+    path('reportes-venta-diarios/<int:pk>/', ReporteVentaDiariaRetrieveUpdateDestroy.as_view(), name='reporte-venta-diaria-detail'),
 ]
-  
-

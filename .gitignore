@@ -42,3 +42,12 @@ coverage.xml
 # Archivos sensibles
 *.env
 venv/
+
+# Django
+*.pyc
+__pycache__/
+db.sqlite3
+
+# Node
+/frontend/node_modules
+/frontend/dist
