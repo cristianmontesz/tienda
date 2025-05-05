@@ -18,12 +18,10 @@ export default function LoginForm() {
     try {
       const response = await login(credentials);
 
-      // ── GUARDA CON LOS MISMOS NOMBRES QUE USA Home.jsx ──
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
       localStorage.setItem('username', credentials.username);
 
-      // ── REDIRIGE AL HOME PROTEGIDO ──
       navigate('/');
     } catch (err) {
       console.error('❌ Error en login:', err.response?.data || err.message);
